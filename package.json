@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "Playwright E2E Testes with AI Capabilities including MCP",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "demo": "npx playwright test tests/demo/mytest.spec.ts --headed",
+    "demo-firefox": "npx playwright test tests/demo/mytest.spec.ts --project=firefox --headed"
+  },
   "keywords": [
     "playwright",
     "playwright-e2e-tests",
