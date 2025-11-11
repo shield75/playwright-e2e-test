@@ -1,5 +1,8 @@
 import { test, expect } from '@playwright/test';
 import fs from 'fs';
+import { getCurrentDateDDMMYYYY } from '../helpers/date-helper';
+import { getRandomData } from '../helpers/data-helper';
+import { get } from 'http';
 
 const testData = JSON.parse(
     fs.readFileSync('data/appointment-data.json', 'utf-8')
@@ -27,49 +30,52 @@ test.describe('Make Appointment Functionality', () => {
     );
 
     test('Make appointment with valid data', async ({ page }) => {
-        const randomFacility =
-            testData.facilities[
-            Math.floor(Math.random() * testData.facilities.length)
-            ];
+        const randomFacility = getRandomData('appointment-data.json', 'facilities') as string;
+        const randomProgram = getRandomData('appointment-data.json', 'programs') as string;
+        const getCurrentDate = getCurrentDateDDMMYYYY();
+        const randomComment = getRandomData('appointment-data.json', 'comments') as string;
+
+        //Select random facility
         await page.getByLabel('Facility').selectOption(randomFacility);
 
+        //Check the checkbox
         await page
             .getByRole('checkbox', { name: 'Apply for hospital readmission' })
             .check();
 
-        const randomProgram =
-            testData.programs[Math.floor(Math.random() * testData.programs.length)];
+        //Select a random healthcare program
         await page.getByRole('radio', { name: randomProgram }).check();
 
-        const today = new Date();
-        const dd = String(today.getDate()).padStart(2, '0');
-        const mm = String(today.getMonth() + 1).padStart(2, '0'); // months are zero-based
-        const yyyy = today.getFullYear();
-        const currentDateFormatted = `${dd}/${mm}/${yyyy}`;
-
+        //Set visit date
         await page.getByRole('textbox', { name: 'Visit Date (Required)' }).click();
         await page
             .getByRole('textbox', { name: 'Visit Date (Required)' })
-            .fill(currentDateFormatted);
+            .fill(getCurrentDate);
         await page
             .getByRole('textbox', { name: 'Visit Date (Required)' })
             .press('Enter');
 
-        const randomComment =
-            testData.comments[Math.floor(Math.random() * testData.comments.length)];
+        //Fill comment    
         await page.getByRole('textbox', { name: 'Comment' }).fill(randomComment);
 
         await page.getByRole('button', { name: 'Book Appointment' }).click();
-        await expect(
-            page.getByRole('heading', { name: 'Appointment Confirmation' })
-        ).toBeVisible();
-
-        await expect(page.locator('#facility')).toContainText(randomFacility);
-        await expect(page.locator('#hospital_readmission')).toContainText('Yes');
-        await expect(page.locator('#program')).toContainText(randomProgram);
-        await expect(page.locator('#visit_date')).toContainText(
-            currentDateFormatted
-        );
-        await expect(page.locator('#comment')).toContainText(randomComment);
+        try {
+            await expect(
+                page.getByRole('heading', { name: 'Appointment Confirmation' })
+            ).toBeVisible();
+        } catch (error) {
+            throw new Error('Appointment confirmation page not displayed.');
+        }
+        try {
+            await expect(page.locator('#facility')).toContainText(randomFacility);
+            await expect(page.locator('#hospital_readmission')).toContainText('Yes');
+            await expect(page.locator('#program')).toContainText(randomProgram);
+            await expect(page.locator('#visit_date')).toContainText(
+                getCurrentDate
+            );
+            await expect(page.locator('#comment')).toContainText(randomComment);
+        } catch (error) {
+            throw new Error('Appointment details do not match the input data.');
+        }
     });
 });
