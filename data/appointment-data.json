@@ -1,0 +1,13 @@
+{
+  "facilities": [
+    "Tokyo CURA Healthcare Center",
+    "Hongkong CURA Healthcare Center",
+    "Seoul CURA Healthcare Center"
+  ],
+  "programs": ["Medicare", "Medicaid", "None"],
+  "comments": [
+    "Booking an appointment for a general checkup",
+    "Need consultation for medical advice",
+    "Follow-up appointment after last visit"
+  ]
+}
