@@ -30,10 +30,10 @@ test.describe('Make Appointment Functionality', () => {
     );
 
     test('Make appointment with valid data', async ({ page }) => {
-        const randomFacility = getRandomData('appointment-data.json', 'facilities') as string;
-        const randomProgram = getRandomData('appointment-data.json', 'programs') as string;
+        const randomFacility = getRandomData('appointment-data.json', 'facilities')
+        const randomProgram = getRandomData('appointment-data.json', 'programs')
         const getCurrentDate = getCurrentDateDDMMYYYY();
-        const randomComment = getRandomData('appointment-data.json', 'comments') as string;
+        const randomComment = getRandomData('appointment-data.json', 'comments')
 
         //Select random facility
         await page.getByLabel('Facility').selectOption(randomFacility);
