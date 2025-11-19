@@ -4,6 +4,7 @@
   "description": "Playwright E2E Testes with AI Capabilities including MCP",
   "main": "index.js",
   "scripts": {
+    "checkout-flow": "npx playwright test tests/functional/swag-labs/checkout.spec.ts --headed",
     "demo": "npx playwright test tests/demo/mytest.spec.ts --headed",
     "demo-firefox": "npx playwright test tests/demo/mytest.spec.ts --project=firefox --headed",
     "login-functionality": "npx playwright test tests/functional/login.spec.ts --headed",

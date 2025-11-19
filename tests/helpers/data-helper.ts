@@ -26,3 +26,11 @@ export function getRandomData(fileName: string, key: string): string {
     // Tell TS this array is string[]
     return getRandomItem(array as string[]);
 }
+
+export function getData(fileName: string, key: string): string {
+    const data = loadTestData(fileName);
+    if (!(key in data)) {
+        throw new Error(`Data key '${key}' not found in file: ${fileName}`);
+    }
+    return data[key] as string;
+}
