@@ -11,3 +11,4 @@ debug/
 logs/
 allure-results/
 example.*
+allure-report/

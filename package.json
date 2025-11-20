@@ -4,6 +4,7 @@
   "description": "Playwright E2E Testes with AI Capabilities including MCP",
   "main": "index.js",
   "scripts": {
+    "allure-report": "allure generate allure-results --clean -o allure-report && cp -r allure-report/history allure-results/history",
     "checkout-flow": "npx playwright test tests/functional/swag-labs/checkout.spec.ts --headed",
     "demo": "npx playwright test tests/demo/mytest.spec.ts --headed",
     "demo-firefox": "npx playwright test tests/demo/mytest.spec.ts --project=firefox --headed",
@@ -20,6 +21,8 @@
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.56.1",
-    "@types/node": "^24.10.0"
+    "@types/node": "^24.10.0",
+    "allure-commandline": "^2.34.1",
+    "allure-playwright": "^3.4.2"
   }
 }

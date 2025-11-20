@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Critical Failures",
+    "messageRegex": ".*critical.*",
+    "status": "failed"
+  },
+  {
+    "name": "Minor Failures",
+    "messageRegex": ".*minor.*",
+    "status": "failed"
+  },
+  {
+    "name": "UI Failures",
+    "messageRegex": ".*UI.*",
+    "status": "failed"
+  },
+  {
+    "name": "API Failures",
+    "messageRegex": ".*API.*",
+    "status": "failed"
+  },
+  {
+    "name": "Known Bugs",
+    "messageRegex": ".*Known Issue.*",
+    "status": "failed"
+  }
+]
