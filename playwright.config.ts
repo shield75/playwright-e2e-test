@@ -25,7 +25,7 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [['html', {open: "never"}], ['allure-playwright', { outputFolder: 'allure-results' }]],
+  reporter: [['html', { open: "never" }], ['allure-playwright', { outputFolder: 'allure-results' }]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
@@ -50,7 +50,11 @@ export default defineConfig({
       name: 'firefox',
       use: { ...devices['Desktop Firefox'] },
     },
-    
+
+    {
+      name: 'Google Pixel',
+      use: { ...devices['Pixel 7'] },
+    }
 
     // {
     //   name: 'webkit',
@@ -79,8 +83,8 @@ export default defineConfig({
   ],
 
   /* Global setup to run before all tests */
-   globalSetup: require.resolve('./tests/helpers/setup-env.ts'),
-   globalTeardown: require.resolve('./tests/helpers/teardown-setup.ts'),
+  globalSetup: require.resolve('./tests/helpers/setup-env.ts'),
+  globalTeardown: require.resolve('./tests/helpers/teardown-setup.ts'),
 
   /* Run your local dev server before starting the tests */
   // webServer: {
