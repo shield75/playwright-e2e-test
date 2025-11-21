@@ -80,6 +80,7 @@ export default defineConfig({
 
   /* Global setup to run before all tests */
    globalSetup: require.resolve('./tests/helpers/setup-env.ts'),
+   globalTeardown: require.resolve('./tests/helpers/teardown-setup.ts'),
 
   /* Run your local dev server before starting the tests */
   // webServer: {
