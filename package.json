@@ -4,6 +4,7 @@
   "description": "Playwright E2E Testes with AI Capabilities including MCP",
   "main": "index.js",
   "scripts": {
+    "demo-cookies": "npx playwright test tests/functional/swag-labs/cookies.spec.ts --headed --workers=1",
     "param-data": "npx playwright test tests/functional/parameterization.make.appointment.spec.ts --headed",
     "demo-hooks": "npx playwright test tests/demo/hooks.demo.spec.ts --headed --workers=1",
     "smoke-test": "npx playwright test --grep @smoke --headed",
