@@ -36,6 +36,16 @@ export default class BasePage {
         }
     }
 
+    async selectDropdownByValue(dropdown: Locator, value: string) {
+        try {
+            await dropdown.selectOption({ value });
+        } catch (error) {
+            console.error(`Failed to select value "${value}" from dropdown. Error: ${error}`);
+            throw error;
+        }
+    }
+
+
     /** URL Assertion */
     async assertURL(expected: string, contains = false) {
         try {
@@ -71,5 +81,6 @@ export default class BasePage {
             throw error;
         }
     }
+
 
 }

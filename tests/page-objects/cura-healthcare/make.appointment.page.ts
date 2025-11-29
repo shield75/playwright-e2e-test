@@ -38,7 +38,7 @@ export default class MakeAppointmentPage extends BasePage {
     async bookAppointment(facility: string, applyHospitalReadmission: boolean, healthcareProgram: string, visitDate: string, comment: string) {
     
         await log("info", `Selecting facility: ${facility}`);
-        await this.typeInto(this.getFacilityDropdown(), facility);
+        await this.selectDropdownByValue(this.getFacilityDropdown(), facility);
 
         if (applyHospitalReadmission) {
             await log("info", `Checking hospital readmission checkbox`);
@@ -49,7 +49,9 @@ export default class MakeAppointmentPage extends BasePage {
         await this.click(this.getHealthcareProgramRadio(healthcareProgram));
 
         await log("info", `Setting visit date: ${visitDate}`);
+        await this.click(this.getVisitDateInput());
         await this.typeInto(this.getVisitDateInput(), visitDate);
+        await this.getVisitDateInput().press("Enter")
 
         await log("info", `Entering comment: ${comment}`);
         await this.typeInto(this.getCommentInput(), comment);
