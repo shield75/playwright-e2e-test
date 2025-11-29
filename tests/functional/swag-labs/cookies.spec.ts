@@ -32,4 +32,4 @@ test.describe('Swag Labs Checkout Tests', () => {
             await page.goto('https://www.saucedemo.com/inventory.html');
             await expect(page).toHaveURL('https://www.saucedemo.com/inventory.html');
     });
-}});
+}}); 

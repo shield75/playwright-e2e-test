@@ -1,12 +1,8 @@
 import { test, expect } from '@playwright/test';
-import fs from 'fs';
 import { getCurrentDateDDMMYYYY } from '../helpers/date-helper';
 import { getRandomData } from '../helpers/data-helper';
-import { get } from 'http';
 
-const testData = JSON.parse(
-    fs.readFileSync('data/appointment-data.json', 'utf-8')
-);
+
 test.describe('Make Appointment Functionality', () => {
     test.beforeEach(
         'Navigate to the Login Page and Login with Valid credentials',
