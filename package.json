@@ -4,6 +4,7 @@
   "description": "Playwright E2E Testes with AI Capabilities including MCP",
   "main": "index.js",
   "scripts": {
+    "demo-api": "npx playwright test --config=config/test.playwright.config.ts tests/api/user.api.spec.ts --workers=1",
     "cura-e2e": "npx playwright test --config=config/test.playwright.config.ts tests/e2e/cura.healthcare.spec.ts --headed --workers=1",
     "demo-logger": "npx playwright test --config=config/test.playwright.config.ts  tests/functional/login.spec.ts --headed --workers=1",
     "demo-cookies": "npx playwright test tests/functional/swag-labs/cookies.spec.ts --headed --workers=1",
