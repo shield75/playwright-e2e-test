@@ -14,7 +14,7 @@ dotenv.config({ path: path.resolve(__dirname, ".env") });
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-export const baseConfig =  defineConfig({
+export const baseConfig = defineConfig({
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -39,21 +39,62 @@ export const baseConfig =  defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
+      name: "chromium",
       use: {
         viewport: null,
-        launchOptions: { args: ['--start-maximized'] },
-      },
+        launchOptions: {
+          args: [
+            "--start-maximized",
+            "--disable-blink-features=AutomationControlled",
+            "--disable-infobars",
+            "--ignore-certificate-errors",
+            "--no-default-browser-check",
+            "--disable-popup-blocking",
+            "--disable-notifications",
+            "--disable-gpu",
+            "--remote-debugging-port=9222",
+          ]
+        }
+      }
     },
 
+    // -------------------------------------------------------------
+    // 🦊 FIREFOX (Desktop)
+    // -------------------------------------------------------------
     {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+      name: "firefox",
+      use: {
+        ...devices["Desktop Firefox"],
+        viewport: { width: 1920, height: 1080 },
+        launchOptions: {
+          headless: false,
+          firefoxUserPrefs: {
+            "security.enterprise_roots.enabled": true,
+            "security.cert_pinning.enforcement_level": 0,
+            "security.mixed_content.block_active_content": false,
+            "security.mixed_content.block_display_content": false,
+            "dom.webdriver.enabled": false,           // hide automation flag
+            "use_automation_extension": false
+          }
+        }
+      }
     },
 
+    // -------------------------------------------------------------
+    // 📱 PIXEL 7 MOBILE (Chrome Android)
+    // -------------------------------------------------------------
     {
-      name: 'Google Pixel',
-      use: { ...devices['Pixel 7'] },
+      name: "Google Pixel",
+      use: {
+        ...devices["Pixel 7"],
+        launchOptions: {
+          args: [
+            "--disable-blink-features=AutomationControlled",
+            "--disable-infobars",
+            "--ignore-certificate-errors"
+          ]
+        }
+      }
     }
 
     // {
