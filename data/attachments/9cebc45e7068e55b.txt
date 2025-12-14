@@ -2,7 +2,7 @@
 [INFO]: Checking hospital readmission checkbox
 [INFO]: Selecting healthcare program: None
 [INFO]: Setting visit date: 14/12/2025
-[INFO]: Entering comment: Booking an appointment for a general checkup
+[INFO]: Entering comment: Follow-up appointment after last visit
 [INFO]: Clicking on Book Appointment button
 [INFO]: Appointment booked successfully.
 [INFO]: Appointment details verified successfully.
