@@ -32,7 +32,7 @@ pipeline {
     stage('Test') {
       steps {
         sh '''
-          export TEST_USER_NAME="$TEST_CREDS_USR"
+          export TEST_USERNAME="$TEST_CREDS_USR"
           export TEST_PASSWORD="$TEST_CREDS_PSW"
           npm run cura-e2e-headless
         '''
