@@ -8,7 +8,11 @@ pipeline {
     timeout(time: 20, unit: 'MINUTES') // To prevent running for long time
   }
   // Binds TEST_CREDS_USR and TEST_CREDS_PSW
-  environment { TEST_CREDS = credentials('e2e-test-user') }
+  environment { 
+    TEST_CREDS = credentials('e2e-test-user')
+    TEST_USERNAME = "${TEST_CREDS_USR}"
+    TEST_PASSWORD = "${TEST_CREDS_PSW}"
+  }
   // -eu: shell safety setting (e -Exit immediately if any command fails; u- Treat unset variables as errors.)
   stages {
     stage('Install System Dependencies') {
@@ -32,8 +36,6 @@ pipeline {
     stage('Test') {
       steps {
         sh '''
-          export TEST_USERNAME="$TEST_CREDS_USR"
-          export TEST_PASSWORD="$TEST_CREDS_PSW"
           npm run cura-e2e-headless
         '''
       }
