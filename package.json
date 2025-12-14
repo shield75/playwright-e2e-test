@@ -1,7 +1,7 @@
 {
   "name": "playwright-e2e-test",
   "version": "1.0.0",
-  "description": "Playwright E2E Testes with AI Capabilities including MCP",
+  "description": "Playwright E2E Tests with AI Capabilities including MCP",
   "main": "index.js",
   "scripts": {
     "demo-nopcommerce": "npx playwright test --config=config/test.playwright.config.ts tests/e2e/nopcommerce.e2e.spec.ts --headed --workers=1",
@@ -9,7 +9,7 @@
     "cura-e2e": "npx playwright test --config=config/test.playwright.config.ts tests/e2e/cura.healthcare.spec.ts --headed --workers=1",
     "cura-e2e-headless": "npx playwright test --config=config/test.playwright.config.ts tests/e2e/cura.healthcare.spec.ts --workers=1",
     "cura-appointment-booking-mcp": "npx playwright test tests/mcp-generated/cura.healthcare.spec.ts --headed",
-    "demo-logger": "npx playwright test --config=config/test.playwright.config.ts  tests/functional/login.spec.ts --headed --workers=1",
+    "demo-logger": "npx playwright test --config=config/test.playwright.config.ts tests/functional/login.spec.ts --headed --workers=1",
     "demo-cookies": "npx playwright test tests/functional/swag-labs/cookies.spec.ts --headed --workers=1",
     "param-data": "npx playwright test tests/functional/parameterization.make.appointment.spec.ts --headed",
     "demo-hooks": "npx playwright test tests/demo/hooks.demo.spec.ts --headed --workers=1",
@@ -20,7 +20,11 @@
     "demo-firefox": "npx playwright test tests/demo/mytest.spec.ts --project=firefox --headed",
     "login-functionality": "npx playwright test tests/functional/login.spec.ts --headed",
     "make-appointment-functionality": "npx playwright test tests/functional/make.appointment.spec.ts --headed",
-    "sorting-functionality": "npx playwright test tests/functional/swag-labs/sorting.functionality.spec.ts --headed"
+    "sorting-functionality": "npx playwright test tests/functional/swag-labs/sorting.functionality.spec.ts --headed",
+    "sauce-demo-login-positive": "npx playwright test tests/agent-generated/tests/sauce-demo-login-positive.spec.ts --headed",
+    "sauce-demo-login-negative": "npx playwright test tests/agent-generated/tests/sauce-demo-login-negative.spec.ts --headed",
+    "sauce-demo-login-edge-cases": "npx playwright test tests/agent-generated/tests/sauce-demo-login-edge-cases.spec.ts --headed",
+    "sauce-demo-login-all": "npx playwright test tests/agent-generated/tests/sauce-demo-login-*.spec.ts"
   },
   "keywords": [
     "playwright",
