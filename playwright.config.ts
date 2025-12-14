@@ -60,25 +60,25 @@ export const baseConfig = defineConfig({
 
     // -------------------------------------------------------------
     // 🦊 FIREFOX (Desktop)
-    // -------------------------------------------------------------
-    {
-      name: "firefox",
-      use: {
-        ...devices["Desktop Firefox"],
-        viewport: { width: 1920, height: 1080 },
-        launchOptions: {
-          headless: false,
-          firefoxUserPrefs: {
-            "security.enterprise_roots.enabled": true,
-            "security.cert_pinning.enforcement_level": 0,
-            "security.mixed_content.block_active_content": false,
-            "security.mixed_content.block_display_content": false,
-            "dom.webdriver.enabled": false,           // hide automation flag
-            "use_automation_extension": false
-          }
-        }
-      }
-    },
+    // // -------------------------------------------------------------
+    // {
+    //   name: "firefox",
+    //   use: {
+    //     ...devices["Desktop Firefox"],
+    //     viewport: { width: 1920, height: 1080 },
+    //     launchOptions: {
+    //       headless: false,
+    //       firefoxUserPrefs: {
+    //         "security.enterprise_roots.enabled": true,
+    //         "security.cert_pinning.enforcement_level": 0,
+    //         "security.mixed_content.block_active_content": false,
+    //         "security.mixed_content.block_display_content": false,
+    //         "dom.webdriver.enabled": false,           // hide automation flag
+    //         "use_automation_extension": false
+    //       }
+    //     }
+    //   }
+    // },
 
     // -------------------------------------------------------------
     // 📱 PIXEL 7 MOBILE (Chrome Android)
