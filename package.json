@@ -7,6 +7,7 @@
     "demo-nopcommerce": "npx playwright test --config=config/test.playwright.config.ts tests/e2e/nopcommerce.e2e.spec.ts --headed --workers=1",
     "demo-api": "npx playwright test --config=config/test.playwright.config.ts tests/api/user.api.spec.ts --workers=1",
     "cura-e2e": "npx playwright test --config=config/test.playwright.config.ts tests/e2e/cura.healthcare.spec.ts --headed --workers=1",
+    "cura-e2e-headless": "npx playwright test --config=config/test.playwright.config.ts tests/e2e/cura.healthcare.spec.ts --workers=1",
     "cura-appointment-booking-mcp": "npx playwright test tests/mcp-generated/cura.healthcare.spec.ts --headed",
     "demo-logger": "npx playwright test --config=config/test.playwright.config.ts  tests/functional/login.spec.ts --headed --workers=1",
     "demo-cookies": "npx playwright test tests/functional/swag-labs/cookies.spec.ts --headed --workers=1",
