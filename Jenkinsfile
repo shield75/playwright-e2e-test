@@ -14,7 +14,6 @@ pipeline {
     stage('Install System Dependencies') {
       steps {
         sh '''
-          set -eu
           # Install required system dependencies for Node.js and Playwright
           apt-get update -qq || true
           apt-get install -y -qq libatomic1 libnss3 libxss1 libasound2 libexpat1 libxkbcommon0 libpango-1.0-0 libpangoft2-1.0-0 || true
