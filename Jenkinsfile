@@ -1,22 +1,32 @@
 pipeline {
   agent any
   tools { 
-    nodejs 'node25' // Jenkins > Global Tool Config: NodeJS named "node22"
-     allure 'allure'// Jenkins > Global Tool Config: Allure named "allure"
-    }
-    options {
+    nodejs 'node25' // Jenkins > Global Tool Config: NodeJS named "node25"
+    allure 'allure'// Jenkins > Global Tool Config: Allure named "allure"
+  }
+  options {
     timeout(time: 20, unit: 'MINUTES') // To prevent running for long time
   }
   // Binds TEST_CREDS_USR and TEST_CREDS_PSW
   environment { TEST_CREDS = credentials('e2e-test-user') }
   // -eu: shell safety setting (e -Exit immediately if any command fails; u- Treat unset variables as errors.)
   stages {
+    stage('Install System Dependencies') {
+      steps {
+        sh '''
+          set -eu
+          # Install required system dependencies for Node.js and Playwright
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libatomic1 libnss3 libxss1 libasound2 libexpat1 libxkbcommon0 libpango-1.0-0 libpangoft2-1.0-0
+        '''
+      }
+    }
     stage('Build') {
       steps {
         sh '''
           set -eu 
           npm ci
-          npx playwright install
+          npx playwright install --with-deps
         '''
       }
     }
