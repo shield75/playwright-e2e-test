@@ -1,8 +1,8 @@
-[INFO]: Selecting facility: Hongkong CURA Healthcare Center
+[INFO]: Selecting facility: Seoul CURA Healthcare Center
 [INFO]: Checking hospital readmission checkbox
 [INFO]: Selecting healthcare program: None
 [INFO]: Setting visit date: 14/12/2025
-[INFO]: Entering comment: Follow-up appointment after last visit
+[INFO]: Entering comment: Need consultation for medical advice
 [INFO]: Clicking on Book Appointment button
 [INFO]: Appointment booked successfully.
 [INFO]: Appointment details verified successfully.
