@@ -1,0 +1,3 @@
+[INFO]: Entered username: John Doe
+[INFO]: Entered password
+[INFO]: Successfully logged in.

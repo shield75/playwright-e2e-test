@@ -1,0 +1,3 @@
+[LOG]: Automation environment : test
+[INFO]: Navigating to the CURA Health Care Application
+[INFO]: Navigating to the path: https://katalon-demo-cura.herokuapp.com/
