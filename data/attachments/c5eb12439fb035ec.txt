@@ -1,6 +1,6 @@
-[INFO]: Selecting facility: Seoul CURA Healthcare Center
+[INFO]: Selecting facility: Tokyo CURA Healthcare Center
 [INFO]: Checking hospital readmission checkbox
-[INFO]: Selecting healthcare program: Medicaid
+[INFO]: Selecting healthcare program: Medicare
 [INFO]: Setting visit date: 14/12/2025
 [INFO]: Entering comment: Follow-up appointment after last visit
 [INFO]: Clicking on Book Appointment button
