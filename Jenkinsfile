@@ -33,11 +33,19 @@ pipeline {
     }
     stage('Test') {
       steps {
-        sh '''
-          export TEST_USERNAME="$TEST_CREDS_USR"
-          export TEST_PASSWORD="$TEST_CREDS_PSW"
-          npm run cura-e2e-headless
-        '''
+        withEnv(["TEST_USERNAME=${TEST_CREDS_USR}", "TEST_PASSWORD=${TEST_CREDS_PSW}"]) {
+          sh '''
+            set -eu
+            # Write credentials to .env file for dotenv to pick up
+            echo "ENV=test" > .env.jenkins
+            echo "TEST_USERNAME=${TEST_USERNAME}" >> .env.jenkins
+            echo "TEST_PASSWORD=${TEST_PASSWORD}" >> .env.jenkins
+            
+            # Source the Jenkins env file before running tests
+            export $(cat .env.jenkins | xargs)
+            npm run cura-e2e-headless
+          '''
+        }
       }
       post {
         always {
